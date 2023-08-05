@@ -13,11 +13,11 @@
 
     <item
         android:id="@+id/navigation_notifications"
-        android:icon="@drawable/ic_notifications_black_24dp"
-        android:title="@string/title_notifications" />
+        android:icon="@drawable/baseline_search_24"
+        android:title="Food" />
     <item
         android:id="@+id/navigation_item"
-        android:icon="@android:drawable/btn_dialog"
-        android:title="item" />
+        android:icon="@drawable/baseline_directions_bike_24"
+        android:title="Workout" />
 
 </menu>
