@@ -49,7 +49,7 @@
             android:entries="@array/exercisetypes"
             android:minHeight="48dp"
             android:prompt="@string/selectExercise"
-            android:background="@drawable/spinner_border"
+
 
             android:spinnerMode="dialog" />
 
@@ -60,7 +60,7 @@
             android:entries="@array/muscle"
             android:prompt="@string/selectExercise"
             android:spinnerMode="dialog"
-            android:background="@drawable/spinner_border"
+
 
             android:minHeight="48dp" />
 
@@ -71,7 +71,7 @@
             android:entries="@array/difficulty"
             android:prompt="@string/selectExercise"
             android:spinnerMode="dialog"
-            android:background="@drawable/spinner_border"
+
 
             android:minHeight="48dp" />
 

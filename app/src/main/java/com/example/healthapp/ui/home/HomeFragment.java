@@ -149,7 +149,7 @@ public class HomeFragment extends Fragment {
 
         @Override
         public void onClick(View view) {
-            deleteLatEntry();
+//            deleteLatEntry();
         }
     };
 
@@ -170,11 +170,11 @@ public class HomeFragment extends Fragment {
                 String docId=doc.getId();
                 System.out.println(doc.get("date"));
 
-//                collectionRef.document(docId).delete().addOnSuccessListener(aVoid ->{
-//
-//                }).addOnFailureListener(e->{
-//
-//                });
+                collectionRef.document(docId).delete().addOnSuccessListener(aVoid ->{
+
+                }).addOnFailureListener(e->{
+
+                });
             }
         });
     }

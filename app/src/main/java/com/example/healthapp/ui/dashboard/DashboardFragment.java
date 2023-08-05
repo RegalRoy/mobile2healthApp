@@ -18,6 +18,8 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.example.healthapp.MainActivity;
+import com.example.healthapp.R;
 import com.example.healthapp.databinding.FragmentDashboardBinding;
 import com.example.healthapp.ui.home.UserClass;
 import com.github.mikephil.charting.charts.BarChart;
@@ -38,6 +40,7 @@ import com.github.mikephil.charting.data.PieEntry;
 import com.github.mikephil.charting.formatter.IAxisValueFormatter;
 import com.github.mikephil.charting.formatter.ValueFormatter;
 import com.github.mikephil.charting.utils.ColorTemplate;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -78,7 +81,8 @@ public class DashboardFragment extends Fragment {
 //        final TextView textView = binding.textDashboard;
         // dashboardViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
         addData();
-        addData2();
+
+
         dashboardViewModel.getUserDataFromFireBase(new DashboardViewModel.OnDataRetrievedListener() {
             @Override
             public void onDataRetrieved(List<UserClass> data) {
@@ -126,7 +130,7 @@ public class DashboardFragment extends Fragment {
                 }
             }
         });
-
+        Snackbar.make(getActivity().findViewById(android.R.id.content), "Use the Switch to view Food/Exercise data and the drop down for a particular month", Snackbar.LENGTH_LONG).show();
         return root;
     }
 
@@ -257,6 +261,8 @@ public class DashboardFragment extends Fragment {
         lineChart2 = binding.chartLine;
         List<Entry> entries = new ArrayList<>();
         List<Entry> entries2 = new ArrayList<>();
+        List<Entry> entries3 = new ArrayList<>();
+        List<Entry> entries4 = new ArrayList<>();
         //sort the userClassList
         Collections.sort(userClassListTEst, new Comparator<UserClass>() {
             SimpleDateFormat dateFormat = new SimpleDateFormat("EEE MMM d HH:mm:ss z yyyy");
@@ -297,6 +303,26 @@ public class DashboardFragment extends Fragment {
             }
         }
 
+        //get shoulder data
+        for (int i = 0; i < userClassListTEst.size(); i++) {
+            float x = i;
+            String shoulder = userClassListTEst.get(i).getShoulders();
+            if (shoulder != null) {
+                float y = Float.parseFloat(shoulder);
+                entries3.add(new Entry(x, y));
+            }
+        }
+
+        //get legs data
+        for (int i = 0; i < userClassListTEst.size(); i++) {
+            float x = i;
+            String legs = userClassListTEst.get(i).getLegs();
+            if (legs != null) {
+                float y = Float.parseFloat(legs);
+                entries4.add(new Entry(x, y));
+            }
+        }
+
 
 
 
@@ -313,7 +339,17 @@ public class DashboardFragment extends Fragment {
         dataSet2.setCircleColor(Color.RED);
         dataSet2.setLineWidth(2f);
 
-        LineData lineData = new LineData(dataSet, dataSet2);
+        LineDataSet dataSet3 = new LineDataSet(entries3, "Shoulder");
+        dataSet3.setColor(Color.GREEN);
+        dataSet3.setCircleColor(Color.GREEN);
+        dataSet3.setLineWidth(2f);
+
+        LineDataSet dataSet4 = new LineDataSet(entries4, "Legs");
+        dataSet4.setColor(Color.BLACK);
+        dataSet4.setCircleColor(Color.BLACK);
+        dataSet4.setLineWidth(2f);
+
+        LineData lineData = new LineData(dataSet, dataSet2,dataSet3,dataSet4);
 
         XAxis xAxis = lineChart.getXAxis();
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
@@ -419,6 +455,8 @@ public class DashboardFragment extends Fragment {
     public void setSpinner(){
 
         items = new ArrayList<>();
+        items.add(""); // Add an empty string as the first item
+
         selectedItems = new SparseBooleanArray();
 
         for (int x: monthSelection
@@ -471,9 +509,9 @@ public class DashboardFragment extends Fragment {
 
                 }
                 if(switchStatus){
-                    binding.textView.setText(" FOOD data for the months of : " + "\n" +text);
+                    binding.textView.setText("FOOD data for: " + "\n" +text);
                 }else{
-                    binding.textView.setText(" Exercise data for the months of : " + "\n" +text);
+                    binding.textView.setText("Exercise data for: " + "\n" +text);
                 }
 
 

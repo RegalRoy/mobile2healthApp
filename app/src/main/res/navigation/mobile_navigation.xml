@@ -20,11 +20,11 @@
     <fragment
         android:id="@+id/navigation_notifications"
         android:name="com.example.healthapp.ui.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
+        android:label="Food Recommendation"
         tools:layout="@layout/fragment_notifications" />
     <fragment
         android:id="@+id/navigation_item"
         android:name="com.example.healthapp.ui.item.ItemFragment"
-        android:label="Item"
+        android:label="Excercise Recommendation"
         tools:layout="@layout/fragment_item" />
 </navigation>

@@ -19,8 +19,8 @@
 
 
     <androidx.cardview.widget.CardView
-        android:layout_width="332dp"
-        android:layout_height="594dp"
+        android:layout_width="373dp"
+        android:layout_height="648dp"
         android:layout_margin="16dp"
         android:padding="8dp"
         app:cardBackgroundColor="#ECECEC"
@@ -41,14 +41,15 @@
                 android:id="@+id/switch1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Switch" />
+                android:minHeight="48dp"
+                android:text="" />
 
             <Spinner
                 android:id="@+id/spinner"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
-                android:background="@drawable/spinner_border"
+
                 android:contentDescription="spinner"
                 android:minHeight="48dp"
                 android:prompt="@string/prompt"
@@ -59,6 +60,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="TextView"
+                android:textAlignment="center"
                 android:textSize="24sp" />
 
             <com.github.mikephil.charting.charts.LineChart

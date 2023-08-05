@@ -122,7 +122,7 @@ public class ItemFragment extends Fragment {
             System.out.println("Muscle Selected " + exerciceMuscle);
             System.out.println("Diff Selected " + exerciseDifficulty);
         }else{
-            Snackbar mySnackbar = Snackbar.make(binding.getRoot(), " ENTER CHOICES ",  Snackbar.LENGTH_SHORT);
+            Snackbar mySnackbar = Snackbar.make(binding.getRoot(), " ENTER CHOICES, and click the CARD for the demo! ",  Snackbar.LENGTH_SHORT);
             mySnackbar.show();
 
 
