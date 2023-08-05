@@ -1,0 +1,11 @@
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape>
+            <solid android:color="@android:color/darker_gray" /> <!-- Background color of the spinner -->
+            <stroke
+                android:width="2dp" /> <!-- Border width (adjust as needed) -->
+            android:color="#FF000000" /> <!-- Border color (adjust as needed) -->
+            <corners android:radius="8dp" /> <!-- Adjust the radius for rounded corners if needed -->
+        </shape>
+    </item>
+</layer-list>
